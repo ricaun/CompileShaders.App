@@ -8,7 +8,7 @@
         xmlns:effect="clr-namespace:CompileShaders.App.ShaderEffects"
         mc:Ignorable="d">
 
-    <Grid Margin="15">
+    <Grid Margin="0">
         <Canvas x:Name="MainCanvas"
                 Height="640"
                 Width="640"
@@ -25,6 +25,24 @@
                        StrokeThickness="4"
                        Canvas.Left="80"
                        Canvas.Top="80" />
+
+            <!-- Box -->
+            <Rectangle Width="200"
+                       Height="200"
+                       Fill="DarkGreen"
+                       Stroke="Black"
+                       StrokeThickness="4"
+                       Canvas.Left="80"
+                       Canvas.Top="360" />
+
+            <!-- Circle -->
+            <Ellipse Width="200"
+                     Height="200"
+                     Fill="DarkCyan"
+                     Stroke="Black"
+                     StrokeThickness="4"
+                     Canvas.Left="360"
+                     Canvas.Top="80" />
 
             <!-- Circle -->
             <Ellipse Width="200"

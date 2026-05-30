@@ -15,6 +15,8 @@ All `.ps` files is included as `Resource` in the project, and the `ShaderEffect`
 
 ## InvertEffect
 
+Simple inversion color effect implemented as a `ShaderEffect` in WPF. The shader code is written in HLSL and compiled to a pixel shader.
+
 ```C#
 // InvertEffect.cs
 public class InvertEffect : ShaderEffect
