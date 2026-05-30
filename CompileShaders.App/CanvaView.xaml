@@ -1,0 +1,40 @@
+﻿<Window x:Class="CompileShaders.App.CanvaView"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CompileShaders.App"
+        xmlns:effect="clr-namespace:CompileShaders.App.ShaderEffects"
+        mc:Ignorable="d">
+
+    <Grid Margin="15">
+        <Canvas x:Name="MainCanvas"
+                Height="640"
+                Width="640"
+                Background="#f0f0f0">
+            <Canvas.Effect>
+                <effect:InvertHueEffect />
+            </Canvas.Effect>
+
+            <!-- Box -->
+            <Rectangle Width="200"
+                       Height="200"
+                       Fill="DarkBlue"
+                       Stroke="Black"
+                       StrokeThickness="4"
+                       Canvas.Left="80"
+                       Canvas.Top="80" />
+
+            <!-- Circle -->
+            <Ellipse Width="200"
+                     Height="200"
+                     Fill="DarkRed"
+                     Stroke="Black"
+                     StrokeThickness="4"
+                     Canvas.Left="360"
+                     Canvas.Top="360" />
+
+        </Canvas>
+    </Grid>
+</Window>
