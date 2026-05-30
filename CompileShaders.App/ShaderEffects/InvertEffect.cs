@@ -1,13 +1,27 @@
 ﻿using System;
+using System.Windows;
+using System.Windows.Media.Effects;
 
 namespace CompileShaders.App.ShaderEffects
 {
-    public class InvertEffect : InputShaderEffect
+public class InvertEffect : ShaderEffect
+{
+    public InvertEffect()
     {
-        public InvertEffect() : base("Shaders/Invert.ps")
-        {
-        }
+        PixelShader = this.CreatePixelShader("Shaders/Invert.ps");
+        UpdateShaderValue(InputProperty);
     }
+
+    public static readonly DependencyProperty InputProperty =
+        ShaderEffect.RegisterPixelShaderSamplerProperty(
+            "Input", typeof(InvertEffect), 0);
+}
+    //public class InvertEffect : InputShaderEffect
+    //{
+    //    public InvertEffect() : base("Shaders/Invert.ps")
+    //    {
+    //    }
+    //}
 
     //public class TransformLuminosityEffect : InputShaderEffect
     //{
