@@ -7,13 +7,52 @@
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <FxcToolPath>$(ProjectDir)Tools\fxc.exe</FxcToolPath>
+    <FxcTargetProfile>ps_2_0</FxcTargetProfile>
+    <FxcEntryPoint>main</FxcEntryPoint>
+    <FxcExtraCommands></FxcExtraCommands>
+
+    <FxcValidProfiles>
+      cs_4_0;cs_4_1;cs_5_0;cs_5_1;
+      ds_5_0;ds_5_1;
+      gs_4_0;gs_4_1;gs_5_0;gs_5_1;
+      hs_5_0;hs_5_1;
+      lib_4_0;lib_4_1;
+      lib_4_0_level_9_1;
+      lib_4_0_level_9_1_vs_only;
+      lib_4_0_level_9_1_ps_only;
+      lib_4_0_level_9_3;
+      lib_4_0_level_9_3_vs_only;
+      lib_4_0_level_9_3_ps_only;
+      lib_5_0;
+      ps_2_0;ps_2_a;ps_2_b;ps_2_sw;
+      ps_3_0;ps_3_sw;
+      ps_4_0;ps_4_0_level_9_1;ps_4_0_level_9_3;ps_4_0_level_9_0;
+      ps_4_1;ps_5_0;ps_5_1;
+      rootsig_1_0;rootsig_1_1;
+      tx_1_0;
+      vs_1_1;vs_2_0;vs_2_a;vs_2_sw;
+      vs_3_0;vs_3_sw;
+      vs_4_0;vs_4_0_level_9_1;vs_4_0_level_9_3;vs_4_0_level_9_0;
+      vs_4_1;vs_5_0;vs_5_1
+    </FxcValidProfiles>
+  </PropertyGroup>
+
   <ItemGroup>
-    <ShaderFiles Include="**\*.fx" />
+    <ShaderFiles Include="**\*.fx;**\*.hlsl">
+      <FolderProfile>$([System.IO.Path]::GetFileName($([System.IO.Path]::GetDirectoryName('%(FullPath)'))))</FolderProfile>
+      <Profile Condition="$(FxcValidProfiles.Contains('%(FolderProfile)'))">%(FolderProfile)</Profile>
+      <Profile Condition="'%(Profile)' == ''">$(FxcTargetProfile)</Profile>
+      <OutputDirectory>%(RecursiveDir)</OutputDirectory>
+      <OutputDirectory Condition="$(FxcValidProfiles.Contains('%(FolderProfile)'))">$([MSBuild]::EnsureTrailingSlash($([System.IO.Path]::GetDirectoryName($([System.String]::Copy('%(RecursiveDir)').TrimEnd('\'))))))</OutputDirectory>
+    </ShaderFiles>
     <Resource Include="**\*.ps" />
   </ItemGroup>
 
   <Target Name="CompileShaders" BeforeTargets="BeforeBuild">
-    <Exec Command="&quot;$(ProjectDir)Tools\fxc.exe&quot; /T ps_2_0 /E main /Fo &quot;%(ShaderFiles.RootDir)%(ShaderFiles.Directory)%(ShaderFiles.Filename).ps&quot; &quot;%(ShaderFiles.FullPath)&quot;" StandardOutputImportance="Low" Condition="Exists('%(ShaderFiles.FullPath)')" />
+    <Message Text="Compiling shader '%(ShaderFiles.Identity)' -&gt; '%(ShaderFiles.OutputDirectory)%(ShaderFiles.Filename).ps' using profile '%(ShaderFiles.Profile)'" Importance="High" />
+    <Exec Command="&quot;$(FxcToolPath)&quot; /T %(ShaderFiles.Profile) /E $(FxcEntryPoint) $(FxcExtraCommands) /Fo &quot;$(ProjectDir)%(ShaderFiles.OutputDirectory)%(ShaderFiles.Filename).ps&quot; &quot;%(ShaderFiles.FullPath)&quot;" StandardOutputImportance="Low" Condition="Exists('%(ShaderFiles.FullPath)')" />
   </Target>
 
 </Project>

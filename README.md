@@ -9,9 +9,9 @@ The `.fx` files are compiled using `fxc.exe` with the following command:
 fxc.exe /T ps_2_0 /E main /Fo "OutputFileName.ps" "InputFileName.fx"
 ```
 
-The targer `CompileShaders` is used to compile all the `.fx` files in `.ps` files when the project is built.
+The targer `CompileShaders` is used to compile all the `.fx` files in `.ps` and `.hlsl` files when the project is built.
 
-All `.ps` files is included as `Resource` in the project, and the `ShaderEffect` classes load the shader from the resource stream.
+All `.ps` and `.hlsl` files is included as `Resource` in the project, and the `ShaderEffect` classes load the shader from the resource stream.
 
 ## InvertEffect
 
