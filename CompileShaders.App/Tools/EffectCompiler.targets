@@ -3,7 +3,7 @@
   <!--<Import Project=".\Tools\EffectCompiler.targets" />-->
 
   <PropertyGroup>
-    <FxcToolPath>$(ProjectDir)Tools\fxc.exe</FxcToolPath>
+    <FxcToolPath Condition="'$(FxcToolPath)' == ''">$(ProjectDir)Tools\fxc.exe</FxcToolPath>
     <FxcTargetProfile Condition="'$(FxcTargetProfile)' == ''">ps_2_0</FxcTargetProfile>
     <FxcEntryPoint Condition="'$(FxcEntryPoint)' == ''">main</FxcEntryPoint>
     <FxcExtraCommands Condition="'$(FxcExtraCommands)' == ''"></FxcExtraCommands>
