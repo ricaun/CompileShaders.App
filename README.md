@@ -2,7 +2,7 @@
 
 This project have a simple implementation of the `ShaderEffects` for WPF.
 
-To build a shader is necessary to have the `fxc.exe` tool, which is part of the Windows SDK. The project contain a copy from the [Windows Software Development Kit (SDK)](https://developer.microsoft.com/pt-br/windows/downloads/windows-10-sdk/) version `10.0.22621.0` / `x64`.
+To build a shader is necessary to have the `fxc.exe` tool ([Effect-Compiler](https://learn.microsoft.com/en-us/windows/win32/direct3dtools/fxc)), which is part of the Windows SDK. The project contain a copy from the [Windows Software Development Kit (SDK)](https://developer.microsoft.com/pt-br/windows/downloads/windows-10-sdk/) version `10.0.22621.0` / `x64`.
 
 The `.fx` files are compiled using `fxc.exe` with the following command:
 ```cmd
