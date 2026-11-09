@@ -88,11 +88,12 @@ float4 main(float2 uv : TEXCOORD) : COLOR
 {
     float4 color = tex2D(input, uv);
 
-    float3 hsl = RGBToHSL(color.rgb);
+    float alpha = color.a;
+    float3 rgb = alpha > 0.00001 ? color.rgb / alpha : float3(0.0, 0.0, 0.0);
 
+    float3 hsl = RGBToHSL(rgb);
     hsl.z = TransformLuminosity(hsl.z, background);
-
     float3 result = HSLToRGB(hsl);
 
-    return float4(result, color.a);
+    return float4(result * alpha, alpha);
 }

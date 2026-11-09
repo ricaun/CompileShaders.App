@@ -8,7 +8,7 @@
         xmlns:effect="clr-namespace:CompileShaders.App.ShaderEffects"
         mc:Ignorable="d">
 
-    <Grid Margin="0">
+    <StackPanel Margin="0">
         <Canvas x:Name="MainCanvas"
                 Height="640"
                 Width="640"
@@ -181,5 +181,32 @@
                      Canvas.Top="360" />
 
         </Canvas>
-    </Grid>
+        <StackPanel Orientation="Horizontal" Background="Gray">
+            <Image Source="16.png">
+                <Image.Effect>
+                    <effect:InvertHueEffect />
+                </Image.Effect>
+            </Image>
+            <Image Source="16.png"
+                   Height="128">
+                <Image.Effect>
+                    <effect:InvertHueEffect />
+                </Image.Effect>
+            </Image>
+            <Image Source="16.png">
+                <Image.Effect>
+                    <effect:TransformLuminosityEffect />
+                </Image.Effect>
+            </Image>
+            <Image Source="16.png"
+                   Height="128">
+                <Image.Effect>
+                    <effect:TransformLuminosityEffect />
+                </Image.Effect>
+            </Image>
+            <Image Source="16.png"
+                   Height="128">
+            </Image>
+        </StackPanel>
+    </StackPanel>
 </Window>

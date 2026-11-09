@@ -36,22 +36,34 @@ float3 hsv2rgb(float3 c)
 
 float4 main(float2 uv : TEXCOORD) : COLOR
 {
-    float4 color = tex2D(input, uv);
+   float4 color = tex2D(input, uv);
 
-    // invert rgb
-    float3 inverted = 1.0 - color.rgb;
+    // Preserve original transparency
+    float alpha = color.a;
 
-    // blend with original
-    float3 blended = lerp(color.rgb, inverted, amount);
+    // Convert from premultiplied to straight alpha
+    float3 rgb = alpha > 0.00001
+        ? color.rgb / alpha
+        : float3(0.0, 0.0, 0.0);
 
-    // rgb -> hsv
+    // Invert RGB
+    float3 inverted = 1.0 - rgb;
+
+    // Blend with original
+    float3 blended = lerp(rgb, inverted, amount);
+
+    // RGB -> HSV
     float3 hsv = rgb2hsv(blended);
 
-    // +180 hue
+    // Rotate hue by 180 degrees
     hsv.x = frac(hsv.x + 0.5);
 
-    // hsv -> rgb
-    color.rgb = hsv2rgb(hsv);
+    // HSV -> RGB
+    float3 result = hsv2rgb(hsv);
+
+    // Convert back to premultiplied alpha
+    color.rgb = result * alpha;
+    color.a = alpha;
 
     return color;
 }

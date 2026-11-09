@@ -3,7 +3,7 @@ using System.Windows.Media.Effects;
 
 namespace CompileShaders.App.ShaderEffects
 {
-    public static class ShaderEffectExtension
+    internal static class ShaderEffectExtension
     {
         public static PixelShader CreatePixelShader(this ShaderEffect shaderEffect, string resourcePath)
         {
