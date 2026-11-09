@@ -17,6 +17,133 @@
                 <effect:InvertHueEffect />
             </Canvas.Effect>
 
+            <Rectangle Width="16"
+                       Height="16">
+                <Rectangle.Fill>
+                    <DrawingBrush Stretch="None">
+                        <DrawingBrush.Drawing>
+                            <DrawingGroup>
+                                <DrawingGroup.ClipGeometry>
+                                    <RectangleGeometry Rect="0,0,16,16" />
+                                </DrawingGroup.ClipGeometry>
+                                <GeometryDrawing Brush="#FFFFFF00">
+                                    <GeometryDrawing.Geometry>
+                                        <RectangleGeometry RadiusX="0"
+                                                           RadiusY="0"
+                                                           Rect="0,12,4,4" />
+                                    </GeometryDrawing.Geometry>
+                                </GeometryDrawing>
+                                <GeometryDrawing Brush="#FF808000">
+                                    <GeometryDrawing.Geometry>
+                                        <RectangleGeometry RadiusX="0"
+                                                           RadiusY="0"
+                                                           Rect="0,8,4,4" />
+                                    </GeometryDrawing.Geometry>
+                                </GeometryDrawing>
+                                <GeometryDrawing Brush="#FFFF0000">
+                                    <GeometryDrawing.Geometry>
+                                        <RectangleGeometry RadiusX="0"
+                                                           RadiusY="0"
+                                                           Rect="0,4,4,4" />
+                                    </GeometryDrawing.Geometry>
+                                </GeometryDrawing>
+                                <GeometryDrawing Brush="#FF800000">
+                                    <GeometryDrawing.Geometry>
+                                        <RectangleGeometry RadiusX="0"
+                                                           RadiusY="0"
+                                                           Rect="0,0,4,4" />
+                                    </GeometryDrawing.Geometry>
+                                </GeometryDrawing>
+                                <GeometryDrawing Brush="#FF00FFFF">
+                                    <GeometryDrawing.Geometry>
+                                        <RectangleGeometry RadiusX="0"
+                                                           RadiusY="0"
+                                                           Rect="4,12,4,4" />
+                                    </GeometryDrawing.Geometry>
+                                </GeometryDrawing>
+                                <GeometryDrawing Brush="#FF008080">
+                                    <GeometryDrawing.Geometry>
+                                        <RectangleGeometry RadiusX="0"
+                                                           RadiusY="0"
+                                                           Rect="4,8,4,4" />
+                                    </GeometryDrawing.Geometry>
+                                </GeometryDrawing>
+                                <GeometryDrawing Brush="#FF00FF00">
+                                    <GeometryDrawing.Geometry>
+                                        <RectangleGeometry RadiusX="0"
+                                                           RadiusY="0"
+                                                           Rect="4,4,4,4" />
+                                    </GeometryDrawing.Geometry>
+                                </GeometryDrawing>
+                                <GeometryDrawing Brush="#FF008000">
+                                    <GeometryDrawing.Geometry>
+                                        <RectangleGeometry RadiusX="0"
+                                                           RadiusY="0"
+                                                           Rect="4,0,4,4" />
+                                    </GeometryDrawing.Geometry>
+                                </GeometryDrawing>
+                                <GeometryDrawing Brush="#FFFF00FF">
+                                    <GeometryDrawing.Geometry>
+                                        <RectangleGeometry RadiusX="0"
+                                                           RadiusY="0"
+                                                           Rect="8,12,4,4" />
+                                    </GeometryDrawing.Geometry>
+                                </GeometryDrawing>
+                                <GeometryDrawing Brush="#FF800080">
+                                    <GeometryDrawing.Geometry>
+                                        <RectangleGeometry RadiusX="0"
+                                                           RadiusY="0"
+                                                           Rect="8,8,4,4" />
+                                    </GeometryDrawing.Geometry>
+                                </GeometryDrawing>
+                                <GeometryDrawing Brush="#FF0000FF">
+                                    <GeometryDrawing.Geometry>
+                                        <RectangleGeometry RadiusX="0"
+                                                           RadiusY="0"
+                                                           Rect="8,4,4,4" />
+                                    </GeometryDrawing.Geometry>
+                                </GeometryDrawing>
+                                <GeometryDrawing Brush="#FF000080">
+                                    <GeometryDrawing.Geometry>
+                                        <RectangleGeometry RadiusX="0"
+                                                           RadiusY="0"
+                                                           Rect="8,0,4,4" />
+                                    </GeometryDrawing.Geometry>
+                                </GeometryDrawing>
+                                <GeometryDrawing Brush="#FFFFFFFF">
+                                    <GeometryDrawing.Geometry>
+                                        <RectangleGeometry RadiusX="0"
+                                                           RadiusY="0"
+                                                           Rect="12,12,4,4" />
+                                    </GeometryDrawing.Geometry>
+                                </GeometryDrawing>
+                                <GeometryDrawing Brush="#FFCCCCCC">
+                                    <GeometryDrawing.Geometry>
+                                        <RectangleGeometry RadiusX="0"
+                                                           RadiusY="0"
+                                                           Rect="12,8,4,4" />
+                                    </GeometryDrawing.Geometry>
+                                </GeometryDrawing>
+                                <GeometryDrawing Brush="#FF333333">
+                                    <GeometryDrawing.Geometry>
+                                        <RectangleGeometry RadiusX="0"
+                                                           RadiusY="0"
+                                                           Rect="12,4,4,4" />
+                                    </GeometryDrawing.Geometry>
+                                </GeometryDrawing>
+                                <GeometryDrawing Brush="#FF000000">
+                                    <GeometryDrawing.Geometry>
+                                        <RectangleGeometry RadiusX="0"
+                                                           RadiusY="0"
+                                                           Rect="12,0,4,4" />
+                                    </GeometryDrawing.Geometry>
+                                </GeometryDrawing>
+                            </DrawingGroup>
+                        </DrawingBrush.Drawing>
+                    </DrawingBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+
             <!-- Box -->
             <Rectangle Width="200"
                        Height="200"
