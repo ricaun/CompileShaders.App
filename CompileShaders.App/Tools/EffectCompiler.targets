@@ -34,19 +34,24 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ShaderFiles Include="**\*.fx;**\*.hlsl">
+    <ShaderFiles Include="**\*.fx;**\*.hlsl" Exclude="$(BaseIntermediateOutputPath)**\*;$(BaseOutputPath)**\*">
       <FolderProfile>$([System.IO.Path]::GetFileName($([System.IO.Path]::GetDirectoryName('%(FullPath)'))))</FolderProfile>
       <Profile Condition="$(FxcValidProfiles.Contains('%(FolderProfile)'))">%(FolderProfile)</Profile>
       <Profile Condition="'%(Profile)' == ''">$(FxcTargetProfile)</Profile>
       <OutputDirectory>%(RecursiveDir)</OutputDirectory>
       <OutputDirectory Condition="$(FxcValidProfiles.Contains('%(FolderProfile)'))">$([MSBuild]::EnsureTrailingSlash($([System.IO.Path]::GetDirectoryName($([System.String]::Copy('%(RecursiveDir)').TrimEnd('\'))))))</OutputDirectory>
+      <OutputFile>%(OutputDirectory)%(Filename).ps</OutputFile>
     </ShaderFiles>
-    <Resource Include="**\*.ps" />
+    <Resource Include="**\*.ps"
+              Exclude="$(BaseIntermediateOutputPath)**\*;$(BaseOutputPath)**\*" />
   </ItemGroup>
 
-  <Target Name="CompileShaders" BeforeTargets="BeforeBuild">
-    <Message Text="Compiling shader '%(ShaderFiles.Identity)' -&gt; '%(ShaderFiles.OutputDirectory)%(ShaderFiles.Filename).ps' using profile '%(ShaderFiles.Profile)'" Importance="High" />
-    <Exec Command="&quot;$(FxcToolPath)&quot; /T %(ShaderFiles.Profile) /E $(FxcEntryPoint) $(FxcExtraCommands) /Fo &quot;$(ProjectDir)%(ShaderFiles.OutputDirectory)%(ShaderFiles.Filename).ps&quot; &quot;%(ShaderFiles.FullPath)&quot;" StandardOutputImportance="Low" Condition="Exists('%(ShaderFiles.FullPath)')" />
+  <Target Name="CompileShaders"
+          BeforeTargets="BeforeBuild"
+          Inputs="@(ShaderFiles)"
+          Outputs="@(ShaderFiles->'%(OutputFile)')">
+    <Message Text="Compiling shader '%(ShaderFiles.Identity)' -&gt; '%(ShaderFiles.OutputFile)' using profile '%(ShaderFiles.Profile)'" Importance="High" />
+    <Exec Command="&quot;$(FxcToolPath)&quot; /T %(ShaderFiles.Profile) /E $(FxcEntryPoint) $(FxcExtraCommands) /Fo &quot;$(ProjectDir)%(OutputFile)&quot; &quot;%(ShaderFiles.FullPath)&quot;" StandardOutputImportance="Low" Condition="Exists('%(ShaderFiles.FullPath)')" />
   </Target>
 
 </Project>
